@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
+$serif_font: 'DM Serif Display', serif;
+
+h1 {
+  font-family: $serif_font;
+  line-height: 1.2;
+  font-size: 5vw;
+}
+
+p {
+  font-family: $serif_font;
+  font-size: 24px;
+  line-height: 1.2;
+
+  @media (min-width: 768px) {
+    font-size: 26px;
+  }
+}
