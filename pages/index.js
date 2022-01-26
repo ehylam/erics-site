@@ -1,9 +1,15 @@
 import Head from 'next/head';
 import Hero from '../components/Hero';
 import Content from '../components/Content';
+import Scroll from '../lib/utils/scroll';
+import { useEffect } from 'react';
 
 
 export default function Home() {
+  useEffect(() => {
+    new Scroll();
+  },[]);
+
   return (
     <main>
       <Head>
@@ -12,9 +18,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
-      <Hero heading="Hello World, have a great day." />
-      <Content />
+      <div className="scrollable">
+        <Hero heading="Hello World, have a great day." />
+        <Content />
+      </div>
 
     </main>
   )
