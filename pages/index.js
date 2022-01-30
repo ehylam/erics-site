@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Hero from '../components/Hero';
 import Content from '../components/Content';
+import Footer from '../components/Footer';
 import Scroll from '../lib/utils/scroll';
 import { useEffect } from 'react';
 
@@ -19,8 +20,9 @@ export default function Home() {
       </Head>
 
       <div className="scrollable">
-        <Hero heading="Hello World, have a great day." />
-        <Content />
+        <Hero heading="Welcome." />
+        <Content content="lorem ipsum dolor amet" />
+        <Footer text="Hello, this is my website that I finish before the end of this year (2022). Please do enjoy the jank construction that is being conducting in this site!"/>
       </div>
 
     </main>
