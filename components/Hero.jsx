@@ -39,7 +39,7 @@ const Hero = props => {
 
     heroLightTl.to('.hero__heading .light--first span', {
       y: '0%',
-      opacity: 1,
+      // opacity: 1,
       stagger: 0.18,
       onStart: function() {
         gsap.set('.hero__heading .light', { zIndex: 2 });

@@ -1,9 +1,9 @@
-$green: #515E53;
+// $green: #515E53;
 
 $staggerOffset: 8;
 
 .hero {
-  background-color: $green;
+  background-color: black;
   color: white;
   height: 100vh;
   display: flex;
@@ -62,7 +62,7 @@ $staggerOffset: 8;
 
         span {
           transform: translate3d(0,100%,0);
-          color: $green;
+          // color: $green;
         }
 
         &:last-child {
