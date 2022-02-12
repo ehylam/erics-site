@@ -21,7 +21,7 @@ export default function Home() {
 
       <div className="scrollable">
         <Hero heading="Welcome." />
-        <Content content="lorem ipsum dolor amet" />
+        <Content heading=" Lorem ipsum" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
         <Footer text="Hello, this is my website that I finish before the end of this year (2022). Please do enjoy the jank construction that is being conducting in this site!"/>
       </div>
 

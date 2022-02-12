@@ -42,18 +42,28 @@ $staggerOffset: 8;
     position: relative;
     display: flex;
     overflow: hidden;
+    white-space: nowrap;
+    cursor: default;
 
     div {
       position: relative;
 
       &.light {
         opacity: 1;
+        z-index: 1;
       }
-      &.dark {
+
+      &.green {
         position: absolute;
         top: 0;
-        opacity: 0;
+        // opacity: 0;
         left: 0;
+        z-index: 2;
+
+        span {
+          transform: translate3d(0,100%,0);
+          color: $green;
+        }
 
         &:last-child {
           left: 50%;
@@ -63,7 +73,7 @@ $staggerOffset: 8;
       &:first-child {
         span {
           // transform: translate3d(0,100%,0);
-          transform: translate(0%, 100%);
+          // transform: translate(0%, 100%);
         }
       }
 
@@ -79,7 +89,7 @@ $staggerOffset: 8;
         position: relative;
         transition: all 1s ease;
         transform: translate3d(0,-100%,0);
-        will-change: transf orm;
+        will-change: transform;
         opacity: 0;
       }
     }

@@ -33,28 +33,56 @@ const Hero = props => {
     // setLoaded(true);
 
 
-    const heroTl = gsap.timeline();
+    const heroLightTl = gsap.timeline();
+    // const heroGreenTl = gsap.timeline({ paused: true });
 
 
-    heroTl.to('.hero__heading div:first-child span', {
+    heroLightTl.to('.hero__heading .light--first span', {
       y: '0%',
       opacity: 1,
-      stagger: 0.18
-    }).to('.hero__heading div:last-child span', {
+      stagger: 0.18,
+      onStart: function() {
+        gsap.set('.hero__heading .light', { zIndex: 2 });
+        gsap.set('.hero__heading .green', { zIndex: 1 });
+      }
+    }).to('.hero__heading .light--second span', {
       y: '0%',
       opacity: 1,
-      stagger: 0.18
-    },0).to('.hero__heading span', {
-      scale: 200,
-      duration: 2,
-      delay: 2
-    }).to('.hero__heading div', {
-      backgroundColor: '#fff',
-    });
+      stagger: -0.18
+    },0)
+    // .to('.hero__heading .light span', {
+    //   scale: 200,
+    //   duration: 2,
+    //   delay: 2,
+    //   // onComplete: function() {
+    //   //   heroGreenTl.play();
+    //   // }
+    // });
+
+    // heroGreenTl.to('.hero__heading .green--first span', {
+    //   y: '0%',
+    //   opacity: 1,
+    //   stagger: 0.18,
+    //   onStart: function() {
+    //     gsap.set('.hero__heading .green', { zIndex: 2 });
+    //     gsap.set('.hero__heading .light', { zIndex: 1 });
+    //   }
+    // }).to('.hero__heading .green--second span', {
+    //   y: '0%',
+    //   opacity: 1,
+    //   stagger: -0.18
+    // },0).to('.hero__heading .green span', {
+    //   scale: 200,
+    //   duration: 2,
+    //   delay: 2,
+    //   onComplete: function() {
+    //     heroLightTl.time(0).play();
+    //   }
+    // });
 
     // TODO: Turn the hero heading into a 'infinite' animation
 
-    heroTl.play();
+    heroLightTl.play();
   },[]);
 
 
@@ -64,18 +92,18 @@ const Hero = props => {
       <div className="hero__wrapper">
         <h5 className="hero__subheading"></h5>
         <h1 className="hero__heading">
-          <div className="light">
+          <div className="light light--first">
             {handleSplitHeading(props.heading, 1)}
           </div>
-          <div className="light">
+          <div className="light light--second">
             {handleSplitHeading(props.heading, 2)}
           </div>
-          <div className="dark">
+          {/* <div className="green green--first">
             {handleSplitHeading(props.heading, 1)}
           </div>
-          <div className="dark">
+          <div className="green green--second">
             {handleSplitHeading(props.heading, 2)}
-          </div>
+          </div> */}
         </h1>
       </div>
     </section>
