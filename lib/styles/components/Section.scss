@@ -1,7 +1,16 @@
 section {
 }
 
-.image_content {
+.image_block {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &.right {
+    justify-content: flex-end;
+  }
+
   .image {
     // height: 100vh;
     aspect-ratio: 16/10;

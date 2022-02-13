@@ -2,14 +2,37 @@ import Head from 'next/head';
 import Hero from '../components/Hero';
 import Section from '../components/Section';
 import Image from '../components/Image';
+import Content from '../components/Content';
 import Footer from '../components/Footer';
-import Scroll from '../lib/utils/scroll';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useEffect } from 'react';
-
+// import Scroll from '../lib/utils/scroll';
 
 export default function Home() {
+  gsap.registerPlugin(ScrollTrigger);
   useEffect(() => {
-    new Scroll();
+    const imageBlockSections = gsap.utils.toArray('.image_block');
+    imageBlockSections.forEach(function(imageSection) {
+      const imageTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: imageSection,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 1,
+          markers: {
+            start: 'start',
+            end: 'end'
+          },
+          onUpdate: self => {
+            // check if the current active content is not the self, if it isn't then update the content/run the transition animation based on it's position
+          }
+
+        }
+      });
+    })
+
+
   },[]);
 
   return (
@@ -21,10 +44,14 @@ export default function Home() {
       </Head>
 
       <div className="scrollable">
-        <Hero heading="Welcome." />
-        <Section id="image_content">
+        {/* <Hero heading="Welcome." /> */}
+        <Section id="image_block">
           <Image src="/images/pic1.jpeg" alt="Eric" />
         </Section>
+        <Section id="image_block right">
+          <Image src="/images/pic2.jpeg" alt="Eric" />
+        </Section>
+        <Content/>
         <Footer text="Hello, this is my website that I finish before the end of this year (2022). Please do enjoy the jank construction that is being conducting in this site!"/>
       </div>
 
