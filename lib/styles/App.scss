@@ -1,9 +1,4 @@
 @use 'reset';
-@use 'variables';
 @use 'typography';
 @use 'global';
-@use './components/Hero';
-@use './components/Content';
-@use './components/Image';
-@use './components/Section';
-@use './components/Footer';
+@use 'components';

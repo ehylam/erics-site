@@ -1,6 +1,14 @@
+$white: #f1f1f1;
+$grey: #dbdbdb;
+$dark-grey: #313131;
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  color: white;
-  background-color: #1E2221;
+  color: $white;
+  background-color: $dark-grey;
   // overscroll-behavior: none;
   // height: 100vh;
   width: 100%;

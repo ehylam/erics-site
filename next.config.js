@@ -4,6 +4,7 @@ module.exports = {
   reactStrictMode: true,
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
+    // prependData: `@use 'variables';`
   },
   webpack: (config, options) => {
     config.module.rules.push({

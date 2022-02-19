@@ -3,108 +3,70 @@ import gsap from 'gsap';
 
 
 const Hero = props => {
-  // const [isLoaded, setLoaded] = useState(false);
+  const headings = props.headings;
+  const [headingsToShow, setHeadingsToShow] = useState(headings.slice(0, 3));
 
-  const handleSplitHeading = (string, half) => {
+
+  function handleSplitHeading (string) {
     const charArr = string.split('');
-    const firstHalf = charArr.slice(0, charArr.length / 2);
-    const secondHalf = charArr.slice(charArr.length / 2, charArr.length);
 
-    if(half === 1) {
-      return firstHalf.map((char, i) => {
-        if(char === ' ') {
-          return <span key={i}>&nbsp;</span>;
-        }
-        return <span key={i}>{char}</span>
-      });
-    } else {
-      return secondHalf.map((char, i) => {
-        if(char === ' ') {
-          return <span key={i}>&nbsp;</span>;
-        }
-        return <span key={i}>{char}</span>
-      });
-    }
+    return charArr.map((char, i) => {
+      if(char === ' ') {
+        return <span className="parent" key={i}><span>&nbsp;</span></span>;
+      }
+      return <span className="parent" key={i}><span>{char}</span></span>
+    });
   }
 
 
+  // Output the headings as a string
+  const headingsString = headingsToShow.map((heading, i) => {
+    return <h1 key={i} className="hero__heading">{handleSplitHeading(heading)}</h1>;
+  });
+
+
   useEffect(() => {
-    handleSplitHeading(props.heading);
-    // setLoaded(true);
+    const headings = gsap.utils.toArray('.hero__heading');
+    const parentSpanTl = gsap.timeline();
+    const childSpanTl = gsap.timeline();
 
 
-    const heroLightTl = gsap.timeline();
-    // const heroGreenTl = gsap.timeline({ paused: true });
+    headings.forEach((heading) => {
+      const parentSpans = gsap.utils.toArray('span.parent', heading);
 
+      parentSpanTl.to(parentSpans, {
+        opacity: 1,
+        duration: 1.5,
+        stagger: 0.02,
+        onComplete: function(){
+          const childSpans = gsap.utils.toArray('span:not(.parent)', heading);
+          childSpanTl.to(childSpans, {
+            x: '100%',
+            opacity: 0,
+            duration: 0.32,
+            onComplete: function(){
+              gsap.set(heading, {className: 'hero__heading right'});
+              childSpanTl.to(childSpans, {
+                x: '-100%',
+                duration: 0,
+              }).to(childSpans, {
+                x: '0%',
+                opacity: 1,
+                duration: 0.32,
+              });
+            }
+          });
+        }
+      });
+    });
 
-    heroLightTl.to('.hero__heading .light--first span', {
-      y: '0%',
-      // opacity: 1,
-      stagger: 0.18,
-      onStart: function() {
-        gsap.set('.hero__heading .light', { zIndex: 2 });
-        gsap.set('.hero__heading .green', { zIndex: 1 });
-      }
-    }).to('.hero__heading .light--second span', {
-      y: '0%',
-      opacity: 1,
-      stagger: -0.18
-    },0)
-    // .to('.hero__heading .light span', {
-    //   scale: 200,
-    //   duration: 2,
-    //   delay: 2,
-    //   // onComplete: function() {
-    //   //   heroGreenTl.play();
-    //   // }
-    // });
-
-    // heroGreenTl.to('.hero__heading .green--first span', {
-    //   y: '0%',
-    //   opacity: 1,
-    //   stagger: 0.18,
-    //   onStart: function() {
-    //     gsap.set('.hero__heading .green', { zIndex: 2 });
-    //     gsap.set('.hero__heading .light', { zIndex: 1 });
-    //   }
-    // }).to('.hero__heading .green--second span', {
-    //   y: '0%',
-    //   opacity: 1,
-    //   stagger: -0.18
-    // },0).to('.hero__heading .green span', {
-    //   scale: 200,
-    //   duration: 2,
-    //   delay: 2,
-    //   onComplete: function() {
-    //     heroLightTl.time(0).play();
-    //   }
-    // });
-
-    // TODO: Turn the hero heading into a 'infinite' animation
-
-    heroLightTl.play();
   },[]);
-
 
 
   return (
     <section className="hero">
       <div className="hero__wrapper">
-        <h5 className="hero__subheading"></h5>
-        <h1 className="hero__heading">
-          <div className="light light--first">
-            {handleSplitHeading(props.heading, 1)}
-          </div>
-          <div className="light light--second">
-            {handleSplitHeading(props.heading, 2)}
-          </div>
-          {/* <div className="green green--first">
-            {handleSplitHeading(props.heading, 1)}
-          </div>
-          <div className="green green--second">
-            {handleSplitHeading(props.heading, 2)}
-          </div> */}
-        </h1>
+        {headingsString}
       </div>
     </section>
   );
