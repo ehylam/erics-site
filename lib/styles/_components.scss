@@ -1,8 +1,9 @@
 .hero {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
+  padding: 25px 20px;
 
   @media (min-width: 1024px) {
     padding: 40px;
@@ -29,6 +30,29 @@
         overflow: hidden;
         opacity: 0;
       }
+    }
+  }
+}
+
+section.section {
+  padding: 25px 20px;
+  @media (min-width: 1024px) {
+    padding: 40px;
+  }
+}
+
+.content {
+  &__wrapper {
+    @media (max-width: 1023px) {
+      width: 100%;
+    }
+
+    @media (min-width: 1024px) {
+      margin-left: auto;
+    }
+
+    p {
+      text-align: right;
     }
   }
 }

@@ -20,10 +20,7 @@ const Hero = props => {
 
 
   // Output the headings as a string
-  const headingsString = headingsToShow.map((heading, i) => {
-    return <h1 key={i} className="hero__heading">{handleSplitHeading(heading)}</h1>;
-  });
-
+  const headingsString = headingsToShow.map((heading, i) => <h1 key={i} className="hero__heading">{handleSplitHeading(heading)}</h1>);
 
   useEffect(() => {
     const headings = gsap.utils.toArray('.hero__heading');
@@ -49,10 +46,12 @@ const Hero = props => {
               childSpanTl.to(childSpans, {
                 x: '-100%',
                 duration: 0,
+                ease: 'ease-in-out'
               }).to(childSpans, {
                 x: '0%',
                 opacity: 1,
                 duration: 0.32,
+                ease: 'ease-in-out'
               });
             }
           });

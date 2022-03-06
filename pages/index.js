@@ -1,13 +1,24 @@
 import Head from 'next/head';
+import { useEffect, useRef } from 'react';
 import Hero from '../components/Hero';
+import Section from '../components/Section';
+import Content from '../components/Content';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { useEffect } from 'react';
 // import Scroll from '../lib/utils/scroll';
 
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
+  const content = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, voluptatum qui aliquid tempora quasi, similique natus temporibus error optio mollitia cupiditate quaerat eos nemo, minus impedit! Reprehenderit architecto alias, sunt quod voluptatem aliquam dolores odit autem consequuntur, illo et? Expedita eum qui accusamus voluptates. Nemo exercitationem voluptatibus est quos? Eaque.";
+  const headerWidth = useRef(0);
+  useEffect(() => {
+    headerWidth.current = document.querySelector('.hero__heading:last-child').offsetWidth;
+  },[]);
 
+  let contentData = {
+    copy: content,
+    width: headerWidth.current
+  }
   return (
     <main>
       <Head>
@@ -18,6 +29,9 @@ export default function Home() {
 
       <div className="scrollable">
         <Hero headings={['Welcome', 'ようこそ', 'Välkommen', 'welkom', '환영하다', 'Bem-vindo']} />
+        <Section classLabel="content">
+          <Content data={contentData} />
+        </Section>
       </div>
 
     </main>
