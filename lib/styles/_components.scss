@@ -32,6 +32,8 @@ section.section {
 }
 
 .content {
+  min-height: 100vh;
+
   &__wrapper {
     max-width: 768px;
 
