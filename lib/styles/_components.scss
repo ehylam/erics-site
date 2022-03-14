@@ -1,37 +1,27 @@
 .hero {
   min-height: 100vh;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
-  padding: 25px 20px;
+	display: flex;
+	align-items: center;
 
-  @media (min-width: 1024px) {
-    padding: 40px;
+  span.hi {
+    display: inline-block;
+    animation: waving 1.2s infinite;
+    animation-timing-function: ease-in-out;
+    transform-origin: bottom right;
   }
 
-  &__wrapper {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-  }
-
-  &__heading {
-    &.right {
-      align-self: flex-end;
+  @keyframes waving {
+    0% {
+      transform: rotate(0deg);
     }
-
-    span {
-      display: inline-block;
-
-      &.parent {
-        overflow: hidden;
-        opacity: 0;
-      }
+    50% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(0deg);
     }
   }
+
 }
 
 section.section {
@@ -43,16 +33,11 @@ section.section {
 
 .content {
   &__wrapper {
+    max-width: 768px;
+
     @media (max-width: 1023px) {
       width: 100%;
     }
-
-    @media (min-width: 1024px) {
-      margin-left: auto;
-    }
-
-    p {
-      text-align: right;
-    }
   }
 }
+

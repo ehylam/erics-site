@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@400;600&display=swap');
 
-$serif-font: 'DM Serif Display', serif;
+$serif-font: 'Paytone One', sans-serif;
 $sans-serif-font: 'Poppins', sans-serif;
 
 body {
@@ -41,7 +41,7 @@ p {
   line-height: 1.2;
 
   @media (min-width: 768px) {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 
