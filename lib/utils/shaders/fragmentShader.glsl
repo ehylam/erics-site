@@ -1,17 +1,10 @@
-uniform sampler2D uTexture;
-uniform float uAlpha;
-uniform vec2 uOffset;
-varying vec2 vUv;
-
-vec3 rgbShift(sampler2D textureimage, vec2 uv, vec2 offset) {
-  float r = texture2D(textureimage, uv + offset).r;
-  vec2 gb = texture2D(textureimage, uv).gb;
-  return vec3(r,gb);
-}
-
+uniform float time;
+uniform vec2 hover;
 
 void main() {
-  vec3 color = rgbShift(uTexture, vUv, uOffset);
+  gl_FragColor = vec4(0.015, 0.13, 0.14, 1.0);
 
-  gl_FragColor = vec4(color, uAlpha);
+  // float noise = 0.5 + 0.5 * sin(time + gl_FragCoord.xy.x * 0.1);
+  // gl_FragColor.rgb *= noise;
+
 }
