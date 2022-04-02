@@ -4,6 +4,7 @@ import Canvas from '../components/Canvas';
 import Hero from '../components/Hero';
 import Section from '../components/Section';
 import Content from '../components/Content';
+import ImageBlock from '../components/ImageBlock';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 // import Scroll from '../lib/utils/scroll';
@@ -21,11 +22,12 @@ export default function Home() {
       </Head>
 
       <div className="scrollable">
-        <Canvas />
+        {/* <Canvas />
         <Hero />
         <Section classLabel="content">
           <Content content={content} />
-        </Section>
+        </Section> */}
+        <ImageBlock image="/images/pic-1.jpeg" />
       </div>
 
     </main>

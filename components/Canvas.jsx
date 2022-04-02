@@ -1,10 +1,10 @@
-import Scene from '../lib/utils/3d';
+// import Scene from '../lib/utils/3d';
 import { useEffect } from 'react';
 
 const Canvas = () => {
 
   useEffect(() => {
-    const scene = new Scene(document.querySelector('canvas'));
+    // const scene = new Scene(document.querySelector('canvas'));
   },[]);
 
   return (
