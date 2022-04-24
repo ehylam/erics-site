@@ -1,17 +1,21 @@
-// import Scene from '../lib/utils/3d';
+import ImageTransition from '../lib/utils/ImageTransition';
 import { useEffect } from 'react';
 
 const Canvas = () => {
 
   useEffect(() => {
-    // const scene = new Scene(document.querySelector('canvas'));
+    new ImageTransition('canvas');
   },[]);
 
   return (
-    <section className="canvas">
-      <canvas>
-      </canvas>
-    </section>
+    <>
+      <section className="canvas">
+        <canvas>
+        </canvas>
+      </section>
+
+      <div className="fullscreen"></div>
+    </>
    );
 }
 

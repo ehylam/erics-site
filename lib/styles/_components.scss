@@ -25,6 +25,7 @@
   &__image {
     opacity: 0;
     pointer-events: none;
+    width: 100%;
   }
 
 }
@@ -74,3 +75,18 @@ section.section {
   height: 100%;
 }
 
+.image {
+  img {
+    opacity: 0;
+  }
+}
+
+
+.fullscreen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
